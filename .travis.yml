@@ -1,10 +1,9 @@
 language: node_js
 node_js: node
-services:
-- mongodb
-addons:
-  apt:
-      sources:
-          - mongodb-3.2-precise
-              packages:
-                  - mongodb-org-server
+deploy:
+  provider: heroku
+    api_key:
+      secure: fa36afce-6da7-4210-a508-86a84073a3b7
+    app: exercise_app
+    on:
+      repo: https://github.com/clurdablur/exercise_app
