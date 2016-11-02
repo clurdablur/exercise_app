@@ -1,0 +1,17 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+addons:
+  apt:
+    sources:
+    - mongodb-3.2-precise
+    packages:
+    - mongodb-org-server
+deploy:
+  provider: heroku
+  api_key:
+    secure: QDMMY6etTsvvxEuieJorlOuL+sq0LMkCHvEw4mKwbFBp6SEYDKdZ2Lr+/0lk/pZgT/XYK4A2cPfg32IaNU+4Im+euuRLZhxe1eV/mHYtiWLB5WRSU+5MN3aIw2TmeSAg0tndF2UzuDKx8bRjU0NBMr0LDxcwne9/4CVeIPif94EOp8SgmgeaGLtS020caeWfewG8hfBW4kguLoHJqCmRfg4wre3/xF8A/2Q7llDn3yALtL5UJb6ygMj3gWsLDIUmk/xgOTrELVoigbWpSg/jBLg++8pVZf15XcaB1BzTARlu+DU4SBWChsNBugKQe/fMlf0blLLwrzvBF42maU+DIISKxjd61QDO3mR9dUWjmEXB1+EoTdU6g9Xen8sgp6cgXmcpXhFl/2jvZMd7pKSoXnaTw5e6bi0QF0yD+8n4+qG+4vt8T4qhGi57aBfPV5L9l46LDHi8lrQhB29zmTJh0bgXc21Qrvz2YL9T1mbhYeoFVOiw7Z7mnjSUbh1BwxlpcJEEGRCA56wfbZaVGZoNtzP+pNY3X+T/TjYXjl9ayrCbUAnMqPZCGmmCYUj194Jf6J57GrSFCOFhJd+/vjOc0Qb2MMAi4qbgh2rr4LrlKJjiFSAPrcvumNqwgDS693bDs5wB2kakxDbtIID7akAe3DodAUxU+V+DF8aE7gox70E=
+  app: pure-castle-32164
+  on:
+    repo: clurdablur/exercise_app
