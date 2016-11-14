@@ -1,14 +1,14 @@
 var data = [{
 	arms: {
-		triceps: 15,
-		pushpress: 10
+		triceps: [4, 15],
+		pushpress: [2, 10]
 	},
 	legs: {
-		squats: 20
+		squats: [3, 20]
 	},
 	abs: {
-		russianTwists: 30,
-		crunches: 50
+		russianTwists: [1, 30],
+		crunches: [3, 50]
 	}
 
 },

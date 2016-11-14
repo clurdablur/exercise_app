@@ -7,30 +7,43 @@ body {
 }
 
 .main{
-    border-bottom: 1em;
-    border-color: black;
-    font-size: 25px;
+    font-size: 3em;
+    background-image: url('https://static.pexels.com/photos/28080/pexels-photo.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 2em;
 }
 
 ul {
     list-style: none;
-    font-size: 20px;
     text-align: left;
-    padding-left: 10em;
+    
+
 }
 
-li {
-    padding-left: 1em;
+.main-options li {
+    padding: 0.35em 0.35em;
+    border-color: black;
+    border-style: solid;
+    margin-bottom: 0.5em;
+    margin-right: 1em;
+    cursor: pointer;
 }
 
 h1 {
     text-align: center;
+    margin: 0;
 }
 
 .main-options{
-    padding-bottom: 2em;
+    padding-top: 0.5em;
+    font-size: 2.5em;
 }
 
 ul li img{
     padding-right: 1em;
+}
+
+.button {
+    cursor: pointer;
 }

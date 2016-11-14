@@ -2,22 +2,40 @@ var express = require('express');
 var app = express();
 var data = require('./mock-data.js');
 var bodyParser = require('body-parser');
+var config = require('./config.js');
+var history = require('./history-mock-data.js');
+var mongoose = require('mongoose');
+var Workout = require('./models/workouts.js');
+var moment = require('moment');
+//moment().format();
 
 var jsonParser = bodyParser.json();
 
 app.use(express.static('public'));
 
 app.get('/365gainz', function(req, res){
-    console.log(data);
+    //console.log(data);
     res.json(data);
 });
 
-app.post('/365gainz', jsonParser, function(req, res){
-    if(!('username' in req.body)) {
+app.get('/history', function(req, res){
+	console.log(history);
+	res.json(history);
+});
+
+app.post('/365gainz',jsonParser, function(req, res){
+    if(!('workoutType' in req.body)) {
         return res.sendStatus(400);
-    }
-    var item = data.add(req.body.name);
-    res.status(201).json(item);
+    } 
+    console.log(req.body);
+    Workout.create({
+    	workoutType: req.body.workoutType
+    }, function(error, workout){
+    	if (error){
+    		return res.status(500).json({message: 'server error'});
+    	}
+    	res.status(201).json(workout);
+    });
 });
 
 app.put('/365gainz/id', function(req, res) {
@@ -64,6 +82,29 @@ var workoutTypes = {
 //https://fullcalendar.io/docs/usage/
 //As a user, I should be able to go back and look at previous workouts.
 
-exports.app = app;
+var runServer = function(callback) {
+    mongoose.connect(config.DATABASE_URL, function(err) {
+        if (err && callback) {
+            return callback(err);
+        }
 
-app.listen(process.env.PORT || 8080);
+        app.listen(config.PORT, function() {
+            console.log('Listening on localhost:' + config.PORT);
+            if (callback) {
+                callback();
+            }
+        });
+    });
+};
+
+if (require.main === module) {
+    runServer(function(err) {
+        if (err) {
+            console.error(err);
+        }
+    });
+};
+
+exports.app = app;
+exports.runServer = runServer;
+//app.listen(process.env.PORT || 8080);

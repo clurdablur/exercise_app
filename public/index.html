@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+    <script src='lib/jquery.min.js'></script>
+    <script src='lib/moment.min.js'></script>
+    <script src='fullcalendar/fullcalendar.js'></script>
+    
 </head>    
 <body>
     <div class="main">
@@ -13,14 +18,35 @@
     </div>
     <div class="main-options">
         <ul>
-            <li><img src="calendar-icon.jpg" height=25 width=25>Today</li>
-            <li><img src="exercise-icon.jpg" height=22 width=22>Workouts</li>
-            <li><img src="history-icon.jpg" height=25 width=25>History</li>
+            <li id="today"><img src="calendar-icon.jpg" height=30 width=30>Today</li>
+            <li id="workout"><img src="exercise-icon.jpg" height=28 width=28>Workouts</li>
+            <li id="history-header"><img src="history-icon.jpg" height=30 width=30>History</li>
         </ul>
     </div>
     <div class="workouts">
         
     </div>
+    <form id="exercise-form">
+        <input type="textbox" id="workout-name" placeholder="New Exercise">
+        <button id="new-workout" class="button">Sumbit</button> 
+        <br>
+        <h3>DATE</h3>
+        <input type="textbox" id="date">
+        <h3>SET</h3>
+        <input type="textbox" id="reps" placeholder="# of reps">
+        <input type="textbox" id="weight" placeholder="weight in lbs"> 
+        <button id="submit-set" class="button">Submit</button>
+        <div id="sets-shown"></div>
+        <br>
+        <h3>WORKOUT</h3>
+        <button id="complete-from" class="button">Complete</button>
+    </form>
+  
+    <div id="history">
+        <h3>CALENDAR</h3>
+        <div id='calendar'></div>
+    </div>
+    
     <script src="//code.jquery.com/jquery.min.js"></script>
 	<script src="app.js"></script>
 </body>
