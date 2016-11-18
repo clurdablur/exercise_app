@@ -6,10 +6,6 @@
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     
-    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
-    <script src='lib/jquery.min.js'></script>
-    <script src='lib/moment.min.js'></script>
-    <script src='fullcalendar/fullcalendar.js'></script>
     
 </head>    
 <body>
@@ -18,36 +14,40 @@
     </div>
     <div class="main-options">
         <ul>
-            <li id="today"><img src="calendar-icon.jpg" height=30 width=30>Today</li>
-            <li id="workout"><img src="exercise-icon.jpg" height=28 width=28>Workouts</li>
-            <li id="history-header"><img src="history-icon.jpg" height=30 width=30>History</li>
+            <li id="today">Today</li>
+            <li id="workout">Workouts</li>
+            <li id="history-header">History</li>
         </ul>
     </div>
     <div class="workouts">
         
     </div>
     <form id="exercise-form">
-        <input type="textbox" id="workout-name" placeholder="New Exercise">
-        <button id="new-workout" class="button">Sumbit</button> 
-        <br>
+        <h2>Create Your Own Workout</h2>
+        <!-- <button id="new-workout" class="button">Sumbit</button> -->
         <h3>DATE</h3>
-        <input type="textbox" id="date">
+        <input type="textbox" id="date" class="textbox datepicker">
+        <h3>EXERCISE</h3>
+        <input type="textbox" id="workoutName" class="textbox" placeholder="New Exercise">
+    
         <h3>SET</h3>
-        <input type="textbox" id="reps" placeholder="# of reps">
-        <input type="textbox" id="weight" placeholder="weight in lbs"> 
-        <button id="submit-set" class="button">Submit</button>
+        <input type="textbox" id="reps" class="textbox" placeholder="# of reps">
+        <input type="textbox" id="weight" class="textbox" placeholder="weight in lbs"> 
+        <!--<button id="submit-set" class="button">Submit</button> -->
         <div id="sets-shown"></div>
         <br>
-        <h3>WORKOUT</h3>
-        <button id="complete-from" class="button">Complete</button>
+        <button id="complete-form" class="button">Submit</button>
     </form>
-  
+    <div id="show-workout">
+        
+    </div>
     <div id="history">
         <h3>CALENDAR</h3>
         <div id='calendar'></div>
     </div>
     
     <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 	<script src="app.js"></script>
 </body>
 </html>

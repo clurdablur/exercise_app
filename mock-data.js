@@ -1,56 +1,63 @@
 var data = [{
-	arms: {
-		triceps: [4, 15],
-		pushpress: [2, 10]
+	"ABS": {
+		"Russian Twist": {
+			reps: 15,
+			weight: 10
+		},
+		"Crunch": {
+			reps: 25,
+			weight: 0
+		},
+		"Rotating Lunge": {
+			reps: 10,
+			weight: 15
+		}
 	},
-	legs: {
-		squats: [3, 20]
+	"ARMS": {		
+		"Chest Press": {
+			reps: 6,
+			weight: 100
+		},
+		"Tricep Extension": {
+			reps: 12,
+			weight: 15
+		},
+		"Tricep Kickback": {
+			reps: 12,
+			weight: 15
+		},
+		"Bent-over Row":{
+			reps: 10,
+			weight: 80
+		}
 	},
-	abs: {
-		russianTwists: [1, 30],
-		crunches: [3, 50]
-	}
-
-},
-{
-	arms: {
-		triceps: 20,
-		pushpress: 15
+	"BACK": {
+		russianTwists: {
+			reps: 2,
+			weight: 20
+		},
+		crunches: {
+			reps: 2,
+			weight: 20
+		}
 	},
-	legs: {
-		squats: 40
+	"BUTT & HIP": {
+		
 	},
-	abs: {
-		russianTwists: 20,
-		crunches: 50
-	}
-
-},
-{
-	arms: {
-		triceps: 10,
-		pushpress: 10
+	"CHEST": {
+		
 	},
-	legs: {
-		squats: 15
+	"FULL-BODY": {
+		
 	},
-	abs: {
-		russianTwists: 20,
-		crunches: 40
-	}
-
-},
-{
-	arms: {
-		triceps: 50,
-		pushpress: 20
+	"UPPER LEG": {
+		
 	},
-	legs: {
-		squats: 30
+	"LOWER LEG": {
+		
 	},
-	abs: {
-		russianTwists: 50,
-		crunches: 100
+	"SHOULDER": {
+		
 	}
 
 }];

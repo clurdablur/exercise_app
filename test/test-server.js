@@ -9,6 +9,20 @@ var storage = server.storage;
 chai.use(chaiHttp);
 
 describe('Exercise App', function() {
+    before(function(done) {
+        server.runServer(function(){
+            User.create({
+                name: 'Sarah'
+            });
+        });
+    });
+    after(function(done){
+        User.remove(function(){
+            done();
+        });
+    });
+    
+    var _id = null;
     it('should list workouts on GET', function(done) {
         chai.request(app)
             .get('/365gainz')
@@ -22,7 +36,8 @@ describe('Exercise App', function() {
             });
     });
 
-    it('should add a workout on POST', function(done){
+   /* Don't think I need a post
+   it('should add a workout on POST', function(done){
         chai.request(app)
             .post('/365gainz')
             .send({
@@ -35,11 +50,32 @@ describe('Exercise App', function() {
                 res.should.have.status(201);
                 done();
             });
+    }); */
+    
+    it('should edit a workout on PUT', function(done){
+        chai.request(app)
+            .put('/history/' + _id)
+            .send({
+                'name': 'Claire' //Change this so you are editing
+                                //the users workout, not the user
+            })
+            .end(function(err, res){
+                should.equal(err, null);
+                res.should.have.status(201);
+                res.should.be.json;
+                done();
+            });
     });
-})
-/*describe('Shopping List', function() {
-    it('should list items on get');
-    it('should add an item on post');
-    it('should edit an item on put');
-    it('should delete an item on delete');
-});*/
+    
+    it('should delete an item on delete', function(done){
+        chai.request(app)
+            .delete('/history/' + _id)
+            .end(function(err, res){
+                should.equal(err, null);
+                res.should.have.status(201);
+                res.should.be.json;
+                res.body.should.have.property('ok');
+                done();
+            })
+    })
+});

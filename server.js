@@ -14,22 +14,22 @@ var jsonParser = bodyParser.json();
 app.use(express.static('public'));
 
 app.get('/365gainz', function(req, res){
-    //console.log(data);
+    console.log(data);
     res.json(data);
 });
 
-app.get('/history', function(req, res){
-	console.log(history);
-	res.json(history);
-});
+
 
 app.post('/365gainz',jsonParser, function(req, res){
-    if(!('workoutType' in req.body)) {
+    if(!('exercise' in req.body)) {
         return res.sendStatus(400);
     } 
     console.log(req.body);
     Workout.create({
-    	workoutType: req.body.workoutType
+        exercise: req.body.exercise,
+    	reps: req.body.reps,
+    	weight: req.body.weight,
+    	date: req.body.date
     }, function(error, workout){
     	if (error){
     		return res.status(500).json({message: 'server error'});
@@ -38,14 +38,39 @@ app.post('/365gainz',jsonParser, function(req, res){
     });
 });
 
+var History = {
+  add: function(name) {
+    var user = {username: name, id: this.setId};
+    this.users.push(user);
+    this.setId += 1;
+    return user;
+  } 
+};
+
+var createHistory = function() {
+  var history = Object.create(History);
+  history.users = [];
+  history.setId = 1;
+  return history;
+};
+
+var history = createHistory();
+
+history.add('Sarah');
+
+app.get('/history', function(request, response) {
+    response.json(history.users);
+});
+
+
 app.put('/365gainz/id', function(req, res) {
 
 });
 
 app.delete('/365gainz/id', function(req, res){
     
-})
-
+});
+/*
 // As a user, I should be able to sign up.
 // As a user, I should be able to login.
 var User = {
@@ -103,8 +128,8 @@ if (require.main === module) {
             console.error(err);
         }
     });
-};
+}
 
 exports.app = app;
-exports.runServer = runServer;
-//app.listen(process.env.PORT || 8080);
+exports.runServer = runServer; */
+app.listen(process.env.PORT || 8080);

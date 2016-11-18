@@ -1,43 +1,57 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #FEFEFA;
-    border-color: black;
-    border: 5%;
-    
+    color: #5b6170;
+    background-color: #dfe6ed;
 }
 
-.main{
-    font-size: 3em;
-    background-image: url('https://static.pexels.com/photos/28080/pexels-photo.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 2em;
+.main {
+    padding: .75em;
+    /*background-color: #94c5cc;*/
+    background-image: url("https://static.pexels.com/photos/28080/pexels-photo.jpg");
+    width: 90%;
+    margin-left: 5%;
+    align-content: center;
 }
 
 ul {
     list-style: none;
-    text-align: left;
-    
-
+    cursor: pointer;
 }
 
 .main-options li {
     padding: 0.35em 0.35em;
-    border-color: black;
     border-style: solid;
-    margin-bottom: 0.5em;
-    margin-right: 1em;
-    cursor: pointer;
+    margin-left: 5%;
+    align-self: center;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-width: .001px;
+    width: 85%;
 }
 
 h1 {
     text-align: center;
-    margin: 0;
 }
 
-.main-options{
-    padding-top: 0.5em;
-    font-size: 2.5em;
+h2 {
+    margin-left: 2.5%;
+}
+
+h3 {
+    margin-left: 5%;
+    margin-bottom: .2em;
+}
+
+
+.main-options {
+    font-size: 1.5em;
+    width: 50%;
+    display: inline-block;
+}
+
+.main-options ul {
+    position: relative;
 }
 
 ul li img{
@@ -46,4 +60,43 @@ ul li img{
 
 .button {
     cursor: pointer;
+}
+
+.workouts{
+    margin: auto;
+    width: 30%;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+}
+
+.workoutTypes li {
+    font-size: 1.5em;
+    margin-top: .2em;
+    border-style: solid;
+    padding: .2em;
+}
+
+li:hover {
+    background-color: #white;
+}
+
+#exercise-form {
+    width: 85%;
+    border: solid;
+    margin: auto;
+}
+
+.textbox {
+    margin-left: 7%;
+    padding: .25em;
+    font-size: 1em;
+}
+
+.button {
+    padding: .5em;
+    margin-left: 7%;
+    margin-bottom: 2em;
+    width: 80px;
 }
