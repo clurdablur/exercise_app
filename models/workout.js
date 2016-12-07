@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var WorkoutSchema = new mongoose.Schema({
+    routineName: { type: String, required: true},
     exercise: { type: String, required: true },
     weight: { type: Number, required: true },
     reps: { type: Number, required: true },

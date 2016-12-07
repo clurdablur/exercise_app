@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>365 Gainz</title>
     <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <link href="css/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+   
     
     
 </head>    
@@ -16,38 +19,51 @@
         <ul>
             <li id="today">Today</li>
             <li id="workout">Workouts</li>
-            <li id="history-header">History</li>
+            <li id="routines">Routines</li>
+            <li id="history-header"><a href="/calendar">History</a></li>
         </ul>
     </div>
     <div class="workouts">
-        
+        <h3>Select routine name</h3>
+        <select id="routine-selector"></select>
     </div>
     <form id="exercise-form">
         <h2>Create Your Own Workout</h2>
         <!-- <button id="new-workout" class="button">Sumbit</button> -->
-        <h3>DATE</h3>
-        <input type="textbox" id="date" class="textbox datepicker">
+        <!-- <h3>DATE</h3>
+        <input type="textbox" id="date" class="textbox datepicker"> -->
         <h3>EXERCISE</h3>
         <input type="textbox" id="workoutName" class="textbox" placeholder="New Exercise">
     
         <h3>SET</h3>
         <input type="textbox" id="reps" class="textbox" placeholder="# of reps">
-        <input type="textbox" id="weight" class="textbox" placeholder="weight in lbs"> 
+        <input type="textbox" id="weight" class="textbox" placeholder="weight in lbs">
         <!--<button id="submit-set" class="button">Submit</button> -->
         <div id="sets-shown"></div>
         <br>
         <button id="complete-form" class="button">Submit</button>
     </form>
+ 
     <div id="show-workout">
-        
+        <h3>Routine Name</h3>
+        <button id="complete-routine" class="button">Completed Workout</button>
+    </div>
+    <div id="completed-routine">
+        <h3>You've completed your workout today!</h3>
     </div>
     <div id="history">
-        <h3>CALENDAR</h3>
-        <div id='calendar'></div>
+        <!--<li><a href="/calendar"></a>Calendar</a></li> -->
+        <!--<div id='calendar'></div>-->
+    </div>
+    <div id="new-routine">
+        <h3>Create a New Routine</h3>
+        <input type="textbox" id="routine-name" class="textbox" placeholder="Routine 1">
+        <button id="routine-title" class="button">New Routine</button>
     </div>
     
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	<script src="app.js"></script>
 </body>
 </html>

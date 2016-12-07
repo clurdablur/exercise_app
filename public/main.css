@@ -79,7 +79,7 @@ ul li img{
 }
 
 li:hover {
-    background-color: #white;
+    background-color: white;
 }
 
 #exercise-form {
@@ -99,4 +99,16 @@ li:hover {
     margin-left: 7%;
     margin-bottom: 2em;
     width: 80px;
+}
+
+#calendar {
+    font-family: 'Roboto', sans-serif;
+    color: #5b6170;
+    background-color: #dfe6ed;
+    margin: 3em;
+    background-color: #fcfcfd;
+}
+
+.strike-through {
+    text-decoration: line-through;
 }

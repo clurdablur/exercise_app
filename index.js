@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var User = require('./user-model');
+var User = require('./models/user-models.js');
 var bcrypt = require('bcryptjs');
 
 var app = express();
@@ -135,7 +135,7 @@ app.get('/hidden', passport.authenticate('basic', {session: false}), function(re
         message: 'Welcome!'
     });
 });
-
+    mongoose.Promise = global.Promise;
     mongoose.connect('mongodb://localhost/auth').then(function() {
     app.listen(process.env.PORT || 8080);
     });

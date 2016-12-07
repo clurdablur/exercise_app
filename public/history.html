@@ -1,0 +1,115 @@
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+    <meta charset="UTF-8">
+    <title>365 Gainz</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+        <div class="main-options">
+        <ul>
+            <li id="today"><a href="/index.html">Today</a></li>
+            <li id="workout"><a href="/index.html">Workouts</a></li>
+            <li id="routines"><a href="/index.html">Routines</a></li>
+            <li id="history-header"><a href="/calendar">History</a></li>
+        </ul>
+    </div>
+    <div id='calendar'></div>
+    <div id="my-modal" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <!--  <p>One fine body&hellip;</p> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+    <button class="hidden" id="btnLanuchModal" type="button" data-toggle="modal" data-target="#my-modal">Open Modal</button>
+    <script>
+        $(document).ready(function() {
+
+            $.getJSON("/history", function(data) {
+                console.log(data);
+                loadCalendar(data);
+            });
+            
+Date.prototype.getFromFormat = function(format) {
+   var yyyy = this.getFullYear().toString();
+   format = format.replace(/yyyy/g, yyyy)
+   var mm = (this.getMonth()+1).toString();
+   format = format.replace(/mm/g, (mm[1]?mm:"0"+mm[0]));
+   var dd  = this.getDate().toString();
+   format = format.replace(/dd/g, (dd[1]?dd:"0"+dd[0]));
+   var hh = this.getHours().toString();
+   format = format.replace(/hh/g, (hh[1]?hh:"0"+hh[0]));
+   var ii = this.getMinutes().toString();
+   format = format.replace(/ii/g, (ii[1]?ii:"0"+ii[0]));
+   var ss  = this.getSeconds().toString();
+   format = format.replace(/ss/g, (ss[1]?ss:"0"+ss[0]));
+   return format;
+ };
+            function loadCalendar(data) {
+                var events = [];
+                data.forEach(function(element){
+                    var obj = {}, dt = new Date(element.date);
+                    obj.title = element.routineName;
+                    obj.description = element.workouts;
+                    obj.start = dt.getFromFormat('yyyy/mm/dd');
+                    events.push(obj);
+                });
+                $('#calendar').fullCalendar({
+                    eventSources: [{
+
+                        events: events,
+                        color: 'black', // an option!
+                        textColor: 'yellow' // an option!
+                    }],
+                    // eventClick: function(event) {
+                    //     if (event.title) {
+                    //         window.open(event.title);
+                    //         return false;
+                    //     }
+                    // }
+                    eventClick: function(event, jsEvent, view) {
+                        $('#btnLanuchModal').click();
+                        //set the values and open the modal
+                        $(".modal-body").html(event.description);
+                        console.log(event.description);
+                        $(".modal-title").html(event.title);
+                        console.log(event.title);
+                    }
+
+                });
+            }
+
+        });
+    </script>
+</body>
+
+</html>
